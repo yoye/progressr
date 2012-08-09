@@ -52,9 +52,9 @@ If your command his in multiple step you can manually set the current position.
 <?php
 $progress = new Progress($output, 4);
 $progress->setCurrent(1)->info('Step1:'); // Display "Step1: 1/4 25%"
-$progress->setCurrent(2)->info('Step2:'); // Display "Step1: 2/4 50%"
-$progress->setCurrent(3)->info('Step3:'); // Display "Step1: 3/4 75%"
-$progress->setCurrent(4)->info('Final step:'); // Display "Step1: 4/4 100%" and add new line
+$progress->setCurrent(2)->info('Step2:'); // Display "Step2: 2/4 50%"
+$progress->setCurrent(3)->info('Step3:'); // Display "Step3: 3/4 75%"
+$progress->setCurrent(4)->info('Final step:'); // Display "Final step: 4/4 100%" and add new line
 ```
 
 You can also display a progress bar.
