@@ -1,17 +1,21 @@
 {
     "name": "yoye/progressr",
+    "type": "symfony-bundle",
     "description": "Helper for progress status in Symfony2 console component",
+    "keywords": ["symfony2", "console"],
     "require": {
         "symfony/console": "2.1.x-dev"
     },
     "authors": [
         {
             "name": "yoye",
-            "email": "y.aparici@gmail.com"
+            "email": "y.aparici@gmail.com",
+            "homepage": "http://yoann.aparici.fr", 
+            "role": "Developer" 
         }
     ],
     "autoload": {
-        "psr-0": { "Yoye\\Progressr": "" }
+        "psr-0": { "Progressr": "" }
     },
     "target-dir": "Yoye\\progressr"
 }
