@@ -1,0 +1,17 @@
+{
+    "name": "yoye/progressr",
+    "description": "Helper for progress status in Symfony2 console component",
+    "require": {
+        "symfony/console": "2.1.*"
+    },
+    "authors": [
+        {
+            "name": "yoye",
+            "email": "y.aparici@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Yoye\\Progressr": "" }
+    },
+    "target-dir": "Yoye\\progressr"
+}
