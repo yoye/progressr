@@ -16,6 +16,5 @@
     ],
     "autoload": {
         "psr-0": { "Progressr": "" }
-    },
-    "target-dir": "Yoye/progressr"
+    }
 }
