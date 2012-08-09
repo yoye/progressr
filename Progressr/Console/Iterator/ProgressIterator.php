@@ -3,6 +3,9 @@
 namespace Progressr\Console\Iterator;
 
 use Iterator;
+
+use Progressr\Console\Helper\Progress;
+
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ProgressIterator implements Iterator
