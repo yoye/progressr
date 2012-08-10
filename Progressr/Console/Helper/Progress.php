@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * This class is an helper for rendering progress information during a console process.
  * You can output simple information as "10/100 10%"
  * Or a progress bar with information
- * 
+ *
  * FLAG_INFO: 20/100 20%
  * FLAG_BAR: [====          ]
  * FLAG_TIME: 1h 25min 32sec
@@ -27,28 +27,28 @@ class Progress
 
     /**
      * Total element for progression
-     * 
+     *
      * @var int $total
      */
     protected $total;
 
     /**
      * Last message outputed
-     * 
+     *
      * @var string $lastMessage
      */
     protected $lastMessage;
 
     /**
      * Current progress value
-     * 
+     *
      * @var int $current
      */
     protected $current;
 
     /**
      * Use tu display time elapse
-     * 
+     *
      * @var int $startTime
      */
     protected $startTime;
@@ -56,7 +56,7 @@ class Progress
     /**
      *
      * @param OutputInterface $output
-     * @param int $total 
+     * @param int             $total
      */
     public function __construct(OutputInterface $output, $total, $flags = self::FLAG_INFO)
     {
@@ -81,7 +81,7 @@ class Progress
 
     /**
      * Get time elapsed since start
-     * 
+     *
      * @return int
      */
     public function getElapsedTime()
@@ -91,19 +91,20 @@ class Progress
 
     /**
      * Set current value
-     * 
-     * @param int $current
-     * @return Progress 
+     *
+     * @param  int      $current
+     * @return Progress
      */
     public function setCurrent($current)
     {
         $this->current = $current;
+
         return $this;
     }
 
     /**
      * Get current value
-     * 
+     *
      * @return int
      */
     public function getCurrent()
@@ -114,7 +115,7 @@ class Progress
     public function display($message = '')
     {
 
-        // Bar 
+        // Bar
         if (($this->flags & self::FLAG_BAR) !== 0) {
             $fill = floor($this->getPercentage() / 5);
 
@@ -148,7 +149,7 @@ class Progress
     /**
      * Check if progress is finished
      * e.g: current increment is equal to total
-     * 
+     *
      * @return boolean
      */
     public function isFinished()
@@ -158,7 +159,7 @@ class Progress
 
     /**
      * Show current status based on total and percentage
-     * 
+     *
      * @return string
      */
     protected function getStatusMessage()
@@ -168,8 +169,8 @@ class Progress
 
     /**
      * Output message, overwrite last message
-     * 
-     * @param string $message 
+     *
+     * @param string $message
      */
     protected function output($message)
     {
@@ -194,7 +195,7 @@ class Progress
 
     /**
      * Get progression percentage
-     * 
+     *
      * @return int
      */
     protected function getPercentage()
@@ -204,12 +205,13 @@ class Progress
 
     /**
      * Increment current value
-     * 
+     *
      * @return Progress
      */
     public function increment()
     {
         $this->current++;
+
         return $this;
     }
 

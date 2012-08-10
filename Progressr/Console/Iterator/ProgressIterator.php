@@ -10,28 +10,28 @@ class ProgressIterator implements Iterator
 {
     /**
      * Progress output helper
-     * 
+     *
      * @var Progress
      */
     protected $progress;
 
     /**
      * Iterator elements
-     * 
+     *
      * @var array
      */
     protected $elements;
 
     /**
      * Flag for output style
-     * 
+     *
      * @var int
      */
     protected $flag;
-    
+
     /**
      * Message to display
-     * 
+     *
      * @var string $message
      */
     protected $message;
@@ -39,9 +39,9 @@ class ProgressIterator implements Iterator
     /**
      *
      * @param OutputInterface $output
-     * @param array $elements
-     * @param string $message
-     * @param int $flag 
+     * @param array           $elements
+     * @param string          $message
+     * @param int             $flag
      */
     public function __construct(OutputInterface $output, array $elements = array(), $flag = self::FLAG_INFO, $message = '')
     {
@@ -53,8 +53,8 @@ class ProgressIterator implements Iterator
 
     /**
      * Set output style flag
-     * 
-     * @param int $flag 
+     *
+     * @param int $flag
      */
     public function setFlag($flag)
     {
