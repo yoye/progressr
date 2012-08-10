@@ -66,6 +66,7 @@ class ProgressIterator implements Iterator
      */
     public function rewind()
     {
+        $this->progress->startTimer();
         reset($this->elements);
     }
 
