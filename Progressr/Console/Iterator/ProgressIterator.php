@@ -3,16 +3,11 @@
 namespace Progressr\Console\Iterator;
 
 use Iterator;
-
 use Progressr\Console\Helper\Progress;
-
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ProgressIterator implements Iterator
 {
-    const FLAG_INFO = 1;    // Info output style
-    const FLAG_BAR = 2;    // Bar output style
-
     /**
      * Progress output helper
      * 
@@ -33,18 +28,27 @@ class ProgressIterator implements Iterator
      * @var int
      */
     protected $flag;
+    
+    /**
+     * Message to display
+     * 
+     * @var string $message
+     */
+    protected $message;
 
     /**
      *
      * @param OutputInterface $output
      * @param array $elements
+     * @param string $message
      * @param int $flag 
      */
-    public function __construct(OutputInterface $output, array $elements = array(), $flag = self::FLAG_INFO)
+    public function __construct(OutputInterface $output, array $elements = array(), $flag = self::FLAG_INFO, $message = '')
     {
         $this->elements = $elements;
-        $this->progress = new Progress($output, count($elements));
+        $this->progress = new Progress($output, count($elements), $flag);
         $this->flag = $flag;
+        $this->message = $message;
     }
 
     /**
@@ -87,13 +91,8 @@ class ProgressIterator implements Iterator
     public function next()
     {
         $this->progress
-            ->setCurrent($this->key() + 1);
-
-        if ($this->flag === self::FLAG_BAR) {
-            $this->progress->bar();
-        } else {
-            $this->progress->info();
-        }
+            ->setCurrent($this->key() + 1)
+            ->display($this->message);
 
         return next($this->elements);
     }

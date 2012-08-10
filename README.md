@@ -30,40 +30,59 @@ class FooCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $progress = new Progress($output, 100);
+        $progress = new Progress($output, 10);
     
-        foreach (range(1, 100) as $value) {
+        foreach (range(1, 10) as $value) {
             $progress
                 ->increment()
-                ->info()
+                ->display()
             ;
             
             // Will display "Current status: x/100 x%"
             
-            sleep(0.1);
+            sleep(1);
         }
     }
 }
 ```
 
-If your command his in multiple step you can manually set the current position.
+If your command is in multiple step you can manually set the current position.
 
 ``` php
 <?php
 $progress = new Progress($output, 4);
-$progress->setCurrent(1)->info('Step1:'); // Display "Step1: 1/4 25%"
-$progress->setCurrent(2)->info('Step2:'); // Display "Step2: 2/4 50%"
-$progress->setCurrent(3)->info('Step3:'); // Display "Step3: 3/4 75%"
-$progress->setCurrent(4)->info('Final step:'); // Display "Final step: 4/4 100%" and add new line
+$progress->setCurrent(1)->display('Step1:'); // Display "Step1: 1/4 25%"
+$progress->setCurrent(2)->display('Step2:'); // Display "Step2: 2/4 50%"
+$progress->setCurrent(3)->display('Step3:'); // Display "Step3: 3/4 75%"
+$progress->setCurrent(4)->display('Final step:'); // Display "Final step: 4/4 100%" and add new line
 ```
 
 You can also display a progress bar.
 
 ``` php
 <?php
-$progress = new Progress($output, 4);
-$progress->setCurrent(1)->bar(); // Display "[=====               ] 1/4 25%"
+$progress = new Progress($output, 4, Progress::FLAG_BAR);
+$progress->setCurrent(1)->display(); // Display "[=====               ] 1/4 25%"
 ```
+
+You can also display a timer.
+
+``` php
+<?php
+$progress = new Progress($output, 4, Progress::FLAG_TIMER);
+$progress->setCurrent(1)->display(); // Display "15min 25sec"
+```
+
+Of course you can mix all together like this:
+
+``` php
+<?php
+$progress = new Progress($output, 4, Progress::FLAG_TIMER | Progress::FLAG_BAR | Progress::FLAG_INFO);
+$progress->setCurrent(1)->display('my message:'); // Display "my message: [=====               ] 15min 25sec 1/4 25%"
+```
+
+You can't redefine display order message always first, then progress bar, time elapsed and info. All of this are only informative stuff,
+I consider that one does not care for display order.
 
 ### Iterator
 Progressr can be used with an iterator that will display informations automatically.
@@ -71,7 +90,7 @@ Progressr can be used with an iterator that will display informations automatica
 ``` php
 <?php
 $array = range(1, 100);
-$iterator = new ProgressIterator($output, $array);
+$iterator = new ProgressIterator($output, $array, Progress::FLAG_BAR | Progress::FLAG_INFO, 'my message:');
 
 foreach ($iterator as $value) {
     // Do stuff

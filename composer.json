@@ -4,14 +4,14 @@
     "description": "Helper for progress status in Symfony2 console component",
     "keywords": ["symfony2", "console"],
     "require": {
-        "symfony/console": "2.1.*"
+        "symfony/console": "2.1.x-dev"
     },
     "authors": [
         {
             "name": "yoye",
-            "email": "y.aparici@gmail.com",
+            "email": "yoann@aparici.fr",
             "homepage": "http://yoann.aparici.fr", 
-            "role": "Developer" 
+            "role": "Developer"
         }
     ],
     "autoload": {
