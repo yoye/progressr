@@ -164,7 +164,7 @@ class Progress
      */
     protected function getStatusMessage()
     {
-        return sprintf('%s/%s %s%%', $this->current, $this->total, $this->getPercentage());
+        return sprintf('(%s/%s) %s%%', $this->current, $this->total, $this->getPercentage());
     }
 
     /**
