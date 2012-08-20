@@ -13,12 +13,16 @@ use Symfony\Component\Console\Output\OutputInterface;
  * FLAG_INFO: 20/100 20%
  * FLAG_BAR: [====          ]
  * FLAG_TIME: 1h 25min 32sec
+ * FLAG_RATIO: 25 objects/s
+ * FLAG_ALL: [====================] 5sec (10/10) 100%, 2 objects/s
  */
 class Progress
 {
     const FLAG_INFO = 1;
     const FLAG_BAR = 2;
     const FLAG_TIMER = 4;
+    const FLAG_RATIO = 8;
+    const FLAG_ALL = 15;
 
     /**
      * @var OutputInterface $output
@@ -141,6 +145,11 @@ class Progress
         // Info
         if (($this->flags & self::FLAG_INFO) !== 0) {
             $message .= ' '.$this->getStatusMessage();
+        }
+
+        // Ration
+        if (($this->flags & self::FLAG_RATIO) !== 0) {
+            $message .= sprintf(', %s objects/s', ceil($this->getCurrent() / $this->getElapsedTime()));
         }
 
         $this->output(trim($message));
