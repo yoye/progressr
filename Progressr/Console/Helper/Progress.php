@@ -62,7 +62,7 @@ class Progress
      * @param OutputInterface $output
      * @param int             $total
      */
-    public function __construct(OutputInterface $output, $total, $flags = self::FLAG_INFO)
+    public function __construct(OutputInterface $output, $total, $flags = self::FLAG_ALL)
     {
         $this->output = $output;
         $this->total = $total;

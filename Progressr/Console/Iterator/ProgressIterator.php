@@ -43,7 +43,7 @@ class ProgressIterator implements Iterator
      * @param string          $message
      * @param int             $flag
      */
-    public function __construct(OutputInterface $output, array $elements = array(), $flag = self::FLAG_INFO, $message = '')
+    public function __construct(OutputInterface $output, array $elements = array(), $flag = Progress::FLAG_ALL, $message = '')
     {
         $this->elements = $elements;
         $this->progress = new Progress($output, count($elements), $flag);
