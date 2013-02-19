@@ -1,6 +1,8 @@
 README
 ======
 
+Since Symfony 2.2 Console component implement his own progress status: http://symfony.com/blog/new-in-symfony-2-2-better-interaction-from-the-console
+
 Introduction
 ------------
 
